@@ -24,7 +24,6 @@ composer.phar
 /web/bundles/
 /web/uploads/
 /app/phpunit.xml
-/phpunit.xml
 /build/
 /composer.phar
 **/Entity/*~
