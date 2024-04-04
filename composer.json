@@ -1,0 +1,55 @@
+{
+  "name": "cpellens/azure",
+  "description": "Prioritizes PHP for use with Azure using small, performant libraries",
+  "minimum-stability": "dev",
+  "license": "GPL-3.0-or-later",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Charles Pellens",
+      "email": "contact@charlespellens.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Azure\\Storage\\": "packages/storage-azure"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Azure\\Storage\\Tests\\": "tests\\storage-azure\\Unit",
+      "Azure\\Storage\\IntegrationTests\\": "tests\\storage-azure\\Integration"
+    }
+  },
+  "require": {
+    "php": ">=8.3",
+    "psr/cache": "^3.0.0",
+    "psr/http-client": "^1.0.3",
+    "psr/http-factory": "^1.0.2",
+    "psr/http-message": "^1.0.1",
+    "fig/http-message-util": "^1.1.5",
+    "psr/http-server-handler": "^1.0.2",
+    "psr/http-server-middleware": "^1.0.2",
+    "psr/log": "^3.0.0",
+    "php-http/discovery": "^1.19.2",
+    "ext-curl": "*",
+    "monolog/monolog": "^3.5.0",
+    "amphp/http-client": "^v5.0.1",
+    "amphp/serialization": "^v1.0.0",
+    "amphp/sync": "v2.1.0",
+    "amphp/log": "^v2.0.0",
+    "amphp/amp": "^v3.0.0",
+    "symfony/serializer": "^7.0",
+    "symfony/property-access": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.0.3",
+    "phpunit/phpcov": "^10.0.0",
+    "rector/rector": "^1.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
