@@ -9,7 +9,7 @@ use Psr\Cache\CacheItemInterface;
 
 class CacheItem implements CacheItemInterface
 {
-    public const INT_DURATION_OFFSET = 60;
+    public const int INT_DURATION_OFFSET = 60;
 
     private ?DateTimeInterface $expiresAt = null;
 

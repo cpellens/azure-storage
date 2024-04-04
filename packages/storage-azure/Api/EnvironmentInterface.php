@@ -10,10 +10,11 @@ use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Psr\Log\LoggerAwareInterface;
 
-interface EnvironmentInterface extends UriFactoryInterface,
-                                       RequestFactoryInterface,
-                                       StreamFactoryInterface,
-                                       LoggerAwareInterface
+interface EnvironmentInterface extends
+    UriFactoryInterface,
+    RequestFactoryInterface,
+    StreamFactoryInterface,
+    LoggerAwareInterface
 {
     public function getAuthenticator(): AuthenticationInterface;
 

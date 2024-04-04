@@ -57,14 +57,14 @@ class ArrayAdapter implements CacheItemPoolInterface
         return true;
     }
 
-    public function saveDeferred(CacheItemInterface $cacheItem): bool
+    public function saveDeferred(CacheItemInterface $item): bool
     {
-        return $this->save($cacheItem);
+        return $this->save($item);
     }
 
-    public function save(CacheItemInterface $cacheItem): bool
+    public function save(CacheItemInterface $item): bool
     {
-        $this->arrayAccess[$cacheItem->getKey()] = $cacheItem;
+        $this->arrayAccess[$item->getKey()] = $item;
         return true;
     }
 
@@ -72,6 +72,4 @@ class ArrayAdapter implements CacheItemPoolInterface
     {
         return true;
     }
-
-
 }

@@ -12,9 +12,9 @@ use ReflectionException;
  */
 abstract class CacheProxy
 {
-    public const ERROR_INVALID_CLASS_NAME = 'Invalid class name provided';
+    public const string ERROR_INVALID_CLASS_NAME = 'Invalid class name provided';
 
-    public const ERROR_INVALID_ACCESS     = 'Class not instantiable';
+    public const string ERROR_INVALID_ACCESS = 'Class not instantiable';
 
     /**
      * @var TClassName
@@ -95,7 +95,7 @@ abstract class CacheProxy
         $isValueReturned = is_null($returnType) || $returnType->getName() !== 'void';
 
         if ($isValueReturned) {
-            // create a hash of the property values of the instance
+            // create a hash of the property values
             $properties           = [];
             $reflectionProperties = $this->reflectionClass->getProperties();
             foreach ($reflectionProperties as $reflectionProperty) {

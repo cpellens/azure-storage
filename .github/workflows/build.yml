@@ -26,7 +26,7 @@ jobs:
         run: composer install --prefer-dist --no-progress -a
 
       - name: Run tests with phpunit
-        run: ./vendor/bin/phpunit --coverage-html coverage
+        run: ./vendor/bin/phpunit --coverage-html coverage -c phpunit.xml
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2

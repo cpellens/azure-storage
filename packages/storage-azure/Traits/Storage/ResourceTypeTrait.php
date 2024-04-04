@@ -9,7 +9,7 @@ trait ResourceTypeTrait
 {
     use EnvironmentAwareTrait;
 
-    public const QUERY_STRING_KEY_RESOURCE_TYPE = 'restype';
+    public const string QUERY_STRING_KEY_RESOURCE_TYPE = 'restype';
 
     protected function createUriFromComp(string $comp): UriInterface
     {

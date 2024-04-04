@@ -2,7 +2,6 @@
 
 namespace Azure\Storage\Library\Defaults\Http\Request;
 
-use Azure\Storage\Api\EnvironmentInterface;
 use Azure\Storage\Api\Http\Request\ResourceRequestTypeEnum;
 use Azure\Storage\Api\Storage\ItemInterface;
 use Azure\Storage\Library\Defaults\Http\MethodEnum;
@@ -12,11 +11,10 @@ use Psr\Http\Message\StreamInterface;
 class PostResourceRequest extends AbstractResourceRequest
 {
     public function __construct(
-        EnvironmentInterface $environment,
         ItemInterface $item,
         ResourceRequestTypeEnum $requestTypeEnum
     ) {
-        parent::__construct(MethodEnum::POST, $environment, $item, $requestTypeEnum);
+        parent::__construct(MethodEnum::POST, $item, $requestTypeEnum);
     }
 
     public function getBody(): StreamInterface

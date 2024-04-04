@@ -1,6 +1,6 @@
 <?php
 
-namespace Azure\Storage\Unit\Defaults;
+namespace Azure\Storage\Tests\Defaults;
 
 use Azure\Storage\Api\AuthenticationInterface;
 use Azure\Storage\Library\Defaults\Environment;
@@ -56,7 +56,7 @@ class EnvironmentTest extends TestCase
         $environment = new Environment(
             'https://example.com',
             $this->createStub(AuthenticationInterface::class),
-            $this->createStub(CacheItemPoolInterface::class)
+            cacheItemPool: $this->createStub(CacheItemPoolInterface::class)
         );
         $uri         = $environment->createUri('/path/to/resource');
 
@@ -72,7 +72,7 @@ class EnvironmentTest extends TestCase
         $environmentWithPath = new Environment(
             'https://example.com/path',
             $this->createStub(AuthenticationInterface::class),
-            $this->createStub(CacheItemPoolInterface::class)
+            cacheItemPool: $this->createStub(CacheItemPoolInterface::class)
         );
         $uriWithPath         = $environmentWithPath->createUri('/to/resource');
         $this->assertInstanceOf(UriInterface::class, $uriWithPath);

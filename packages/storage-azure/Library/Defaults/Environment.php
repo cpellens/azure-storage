@@ -161,6 +161,6 @@ class Environment implements EnvironmentInterface
             return new CurlClient($this, $this->responseFactory);
         }
 
-        return new AmphpClient();
+        return new AmphpClient($this->responseFactory);
     }
 }

@@ -10,13 +10,14 @@ use Azure\Storage\Api\Storage\BlobInterface;
 use Azure\Storage\Api\Storage\ContainerInterface;
 use Azure\Storage\Api\Storage\ResourceTypeEnum;
 use Azure\Storage\Library\Defaults\Http\Request\GetResourceRequest;
+use Azure\Storage\Library\Defaults\Http\Response;
 use DateTimeInterface;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\SerializerAwareTrait;
 use UnexpectedValueException;
 
-class Blob implements BlobInterface
+class Blob extends Response implements BlobInterface
 {
     use SerializerAwareTrait;
 
@@ -43,47 +44,30 @@ class Blob implements BlobInterface
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return $this->name;
     }
 
     public function getContentType(): string
     {
-        // TODO: Implement getContentType() method.
+        return $this->getHeaderLine('Content-Type');
     }
 
     public function setContentType(string $contentType): void
     {
-        // TODO: Implement setContentType() method.
+        $this->withHeader('Content-Type', $contentType);
     }
 
     public function getId(): string
     {
-        // TODO: Implement getId() method.
+        return $this->getHeaderLine('x-ms-id');
     }
 
+    /**
+     * @throws ClientExceptionInterface
+     */
     public function getCreatedAt(): DateTimeInterface
     {
-        // TODO: Implement getCreatedAt() method.
-    }
-
-    public function getUpdatedAt(): DateTimeInterface
-    {
-        // TODO: Implement getUpdatedAt() method.
-    }
-
-    public function getMetadata(): ArrayAccess
-    {
-        // TODO: Implement getMetadata() method.
-    }
-
-    public function setMetadata(ArrayAccess $arrayAccess): void
-    {
-        // TODO: Implement setMetadata() method.
-    }
-
-    public function getVersion(): string
-    {
-        // TODO: Implement getVersion() method.
+        return $this->getProperties()['created_at'];
     }
 
     /**
@@ -107,6 +91,37 @@ class Blob implements BlobInterface
         return new ArrayObject($response->getHeaders());
     }
 
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function getUpdatedAt(): DateTimeInterface
+    {
+        return $this->getProperties()['updated_at'];
+    }
+
+    public function setMetadata(ArrayAccess $arrayAccess): void
+    {
+    }
+
+    public function getVersion(): string
+    {
+        return $this->getMetadata()['version'];
+    }
+
+    public function getMetadata(): ArrayAccess
+    {
+        $array = new ArrayObject();
+
+        foreach ($this->getHeaders() as $header => $_) {
+            if (!str_starts_with($header, 'x-meta-')) {
+                continue;
+            }
+
+            $array[$header] = $this->getHeaderLine($header);
+        }
+
+        return $array;
+    }
 
     public function getResourceType(): ResourceTypeEnum
     {

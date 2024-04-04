@@ -1,6 +1,6 @@
 <?php
 
-namespace Azure\Storage\Unit\Utilities;
+namespace Azure\Storage\Tests\Utilities;
 
 use ArrayObject;
 use Azure\Storage\Library\Storage\Cache\ArrayAdapter;

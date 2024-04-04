@@ -1,6 +1,6 @@
 <?php
 
-namespace Azure\Storage\Unit\Defaults;
+namespace Azure\Storage\Tests\Defaults;
 
 use Azure\Storage\Library\Defaults\Http\Request;
 use Azure\Storage\Library\Defaults\Http\Uri;

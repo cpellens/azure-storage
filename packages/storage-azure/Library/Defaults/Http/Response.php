@@ -7,15 +7,15 @@ use Psr\Http\Message\StreamInterface;
 
 class Response implements ResponseInterface
 {
-    private string           $protocolVersion = '1.1';
+    private string $protocolVersion = '1.1';
 
-    private array            $headers         = [];
+    private array $headers = [];
 
-    private ?StreamInterface $stream            = null;
+    private ?StreamInterface $stream = null;
 
-    private int              $statusCode      = 200;
+    private int $statusCode = 200;
 
-    private string           $reasonPhrase    = '';
+    private string $reasonPhrase = '';
 
     public function getProtocolVersion(): string
     {
@@ -70,7 +70,8 @@ class Response implements ResponseInterface
             $value = [$value];
         }
 
-        $new->headers[$name] = ($currentValues = $new->getHeader($name)) !== [] ? array_merge($currentValues, $value) : $value;
+        $new->headers[$name] =
+            ($currentValues = $new->getHeader($name)) !== [] ? array_merge($currentValues, $value) : $value;
 
         return $new;
     }
@@ -94,7 +95,7 @@ class Response implements ResponseInterface
 
     public function withBody(StreamInterface $body): self
     {
-        $new       = clone $this;
+        $new = clone $this;
         $new->stream = $body;
         return $new;
     }
@@ -116,5 +117,4 @@ class Response implements ResponseInterface
     {
         return $this->reasonPhrase;
     }
-
 }

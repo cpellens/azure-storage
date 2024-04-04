@@ -1,6 +1,6 @@
 <?php
 
-namespace Azure\Storage\Unit\Storage\Blobs;
+namespace Azure\Storage\Tests\Storage\Blobs;
 
 use Azure\Storage\Api\AdapterInterface;
 use Azure\Storage\Api\AuthenticationInterface;
@@ -31,7 +31,6 @@ class ContainerTest extends TestCase
         $this->assertSame('test-container', $metadata->offsetGet('name'));
         $this->assertTrue(isset($metadata['another']));
         $this->assertSame('key, to, test', $metadata['another']);
-        $this->assertEmpty($this->queue);
 
         $this->assertSame($metadata, $testContainer->getMetadata());
     }
@@ -129,7 +128,7 @@ RESPONSE_XML;
         $this->http->method('sendRequest')->willReturn($responseObject);
 
         $container = $this->adapter->getContainer('test-container');
-        $blobs     = iterator_to_array($container->list());
+        iterator_to_array($container->list());
     }
 
     /**

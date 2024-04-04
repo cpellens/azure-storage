@@ -130,5 +130,4 @@ class Stream implements StreamInterface, Stringable
     {
         return fread($this->resource, $length);
     }
-
 }

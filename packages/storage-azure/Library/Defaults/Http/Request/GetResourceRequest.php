@@ -14,6 +14,6 @@ class GetResourceRequest extends AbstractResourceRequest
         ItemInterface $item,
         ResourceRequestTypeEnum $requestTypeEnum
     ) {
-        parent::__construct(MethodEnum::GET, $environment, $item, $requestTypeEnum);
+        parent::__construct(MethodEnum::GET, $item, $requestTypeEnum);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Azure\Storage\Unit;
+namespace Azure\Storage\Tests;
 
 use Azure\Storage\Api\AuthenticationInterface;
 use Azure\Storage\Api\EnvironmentInterface;

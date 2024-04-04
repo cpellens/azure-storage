@@ -11,6 +11,7 @@ use Azure\Storage\Library\Storage\Blobs\Container;
 use Azure\Storage\Library\Storage\Cache\ArrayAdapter;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientExceptionInterface;
 
 #[CoversClass(Container::class)]
 class BlobTest extends TestCase
@@ -18,6 +19,9 @@ class BlobTest extends TestCase
     private AdapterInterface $adapter;
 
 
+    /**
+     * @throws ClientExceptionInterface
+     */
     public function testCreateContainer(): void
     {
         // try creating a container named `test-container`

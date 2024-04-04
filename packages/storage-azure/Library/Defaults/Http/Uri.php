@@ -152,9 +152,9 @@ class Uri implements UriInterface
         return implode(
             '',
             [
-                $this->scheme ? "{$this->scheme}://" : '',
-                $this->authority ? "{$this->authority}:{$this->host}" : $this->host,
-                $this->port ? ":{$this->port}" : '',
+                $this->scheme ? "$this->scheme://" : '',
+                $this->authority ? "$this->authority:$this->host" : $this->host,
+                $this->port ? ":$this->port" : '',
                 '/' . trim($this->path ?? '', '/'),
                 $this->query !== '' ? '?' . $this->query : '',
                 $this->fragment !== '' ? '#' . $this->fragment : ''

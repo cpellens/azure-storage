@@ -8,7 +8,7 @@ use Rector\Exception\Configuration\InvalidConfigurationException;
 try {
     return RectorConfig::configure()
                        ->withPaths([
-                           __DIR__ . '/src',
+                           __DIR__ . '/packages',
                            __DIR__ . '/tests',
                        ])
                        ->withPhpSets()

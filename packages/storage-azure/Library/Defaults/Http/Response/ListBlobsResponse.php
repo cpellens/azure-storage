@@ -7,7 +7,7 @@ use Azure\Storage\Api\Storage\BlobInterface;
 
 class ListBlobsResponse implements ListBlobsResponseInterface
 {
-    public const STR_ROOT_TAG = 'EnumerationResults';
+    public const string STR_ROOT_TAG = 'EnumerationResults';
 
     protected string $prefix;
     protected string $marker;
@@ -18,7 +18,7 @@ class ListBlobsResponse implements ListBlobsResponseInterface
 
     public function current(): BlobInterface
     {
-        // TODO: Implement current() method.
+        return $this->blobs[0];
     }
 
     public function next(): void
@@ -26,14 +26,14 @@ class ListBlobsResponse implements ListBlobsResponseInterface
         // TODO: Implement next() method.
     }
 
-    public function key(): mixed
+    public function key(): string
     {
-        // TODO: Implement key() method.
+        return '';
     }
 
     public function valid(): bool
     {
-        // TODO: Implement valid() method.
+        return false;
     }
 
     public function rewind(): void
@@ -43,6 +43,6 @@ class ListBlobsResponse implements ListBlobsResponseInterface
 
     public function count(): int
     {
-        // TODO: Implement count() method.
+        return 0;
     }
 }

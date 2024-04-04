@@ -117,6 +117,9 @@ class Container implements ContainerInterface
         // TODO: Implement store() method.
     }
 
+    /**
+     * @throws ClientExceptionInterface
+     */
     public function isPublic(): bool
     {
         $metadata = $this->getMetadata();
